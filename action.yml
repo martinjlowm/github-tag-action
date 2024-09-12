@@ -8,7 +8,7 @@ runs:
       with:
         nix_path: nixpkgs=channel:nixos-unstable
     - name: Evaluate
-      run: entrypoint.sh
+      run: $GITHUB_ACTION_PATH/entrypoint.sh
       shell: bash
       env:
         BRANCH_HISTORY: ${{ env.BRANCH_HISTORY }}
