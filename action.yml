@@ -9,6 +9,7 @@ runs:
         nix_path: nixpkgs=channel:nixos-unstable
     - name: Evaluate
       run: entrypoint.sh
+      shell: bash
       env:
         BRANCH_HISTORY: ${{ env.BRANCH_HISTORY }}
         CUSTOM_TAG: ${{ env.CUSTOM_TAG }}
