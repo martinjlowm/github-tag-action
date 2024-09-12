@@ -1,5 +1,3 @@
-#!/usr/bin/env -S nix shell nixpkgs#{bash,git,curl,jq,nodePackages.semver} --command bash
-
 set -eo pipefail
 
 # config
