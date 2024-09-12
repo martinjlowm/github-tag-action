@@ -1,6 +1,6 @@
-#!/bin/bash
-
-set -eo pipefail
+#!/usr/bin/env nix-shell
+#!nix-shell -i bash
+#!nix-shell -p git curl jq nodePackages.semver
 
 # config
 default_semvar_bump=${DEFAULT_BUMP:-minor}
@@ -129,7 +129,7 @@ tag_commit=$(git rev-list -n 1 "$tag" || true )
 # get current commit hash
 commit=$(git rev-parse HEAD)
 # skip if there are no new commits for non-pre_release
-if [ "$tag_commit" == "$commit" ] && [ "$force_without_changes" == "false" ] 
+if [ "$tag_commit" == "$commit" ] && [ "$force_without_changes" == "false" ]
 then
     echo "No new commits since previous tag. Skipping..."
     setOutput "new_tag" "$tag"
@@ -192,7 +192,7 @@ then
     # get current commit hash for tag
     pre_tag_commit=$(git rev-list -n 1 "$pre_tag" || true)
     # skip if there are no new commits for pre_release
-    if [ "$pre_tag_commit" == "$commit" ] &&  [ "$force_without_changes_pre" == "false" ] 
+    if [ "$pre_tag_commit" == "$commit" ] &&  [ "$force_without_changes_pre" == "false" ]
     then
         echo "No new commits since previous pre_tag. Skipping..."
         setOutput "new_tag" "$pre_tag"
