@@ -1,4 +1,6 @@
-set -eo pipefail
+#!/usr/bin/env nix-shell
+#!nix-shell -i bash
+#!nix-shell -p git curl jq nodePackages.semver
 
 # config
 default_semvar_bump=${DEFAULT_BUMP:-minor}

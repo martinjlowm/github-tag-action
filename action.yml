@@ -6,12 +6,10 @@ runs:
   steps:
     - uses: cachix/install-nix-action@v27
       with:
-        nix_path: nixpkgs=channel:nixos-unstable
-    - uses: workflow/nix-shell-action@v3
-      with:
-        packages: bash,git,curl,jq,nodePackages.semver
-        script: |
-          $GITHUB_ACTION_PATH/entrypoint.sh
+        nix_path: nixpkgs=channel:nixos-24.05-small
+    - run: |
+        $GITHUB_ACTION_PATH/entrypoint.sh
+      shell: bash
       env:
         BRANCH_HISTORY: ${{ env.BRANCH_HISTORY }}
         CUSTOM_TAG: ${{ env.CUSTOM_TAG }}
